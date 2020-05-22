@@ -10,3 +10,4 @@ Componentes do time:
 - Bruno Andrade
 - Willian Damasceno
 - João Consentino
+- Filipe Oliveira
