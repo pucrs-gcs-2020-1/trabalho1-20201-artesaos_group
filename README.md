@@ -11,3 +11,7 @@ Componentes do time:
 - Willian Damasceno
 - João Consentino
 - Filipe Oliveira
+
+# Branching model
+
+https://nvie.com/posts/a-successful-git-branching-model/
