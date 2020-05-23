@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class GerenciadorOperadores {
 
-    ArrayList<Operador> operadores = new ArrayList<>();
+    ArrayList<Operador> operadores;
 
     public GerenciadorOperadores() {
-
+        this.operadores = new ArrayList<>();
     }
 
     public void cadastrarOperador(String nome, String iniciais) {
@@ -29,4 +29,14 @@ public class GerenciadorOperadores {
     public ArrayList<Operador> getOperadores() {
         return this.operadores;
     }
+
+    @Override
+    public String toString() {
+        String string = "";
+        for (Operador operador:operadores) {
+            string  += "\n" + operador;
+        }
+        return string;
+    }
+
 }

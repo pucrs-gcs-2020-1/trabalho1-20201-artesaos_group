@@ -1,4 +1,6 @@
 package models;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Movimentacao {
@@ -7,14 +9,12 @@ public class Movimentacao {
     private int numeroDoc;
     private String descricao;
     private double valor;
-    private String tipo;
 
-    public Movimentacao(int numeroDoc, String descricao, double valor, String tipo){      
+    public Movimentacao(int numeroDoc, String descricao, double valor){      
         this.data = new Date(System.currentTimeMillis());
         this.numeroDoc = numeroDoc;
         this.descricao = descricao;
         this.valor = valor;
-        this.tipo = tipo;
     }
 
     public Date getData() {
@@ -34,12 +34,17 @@ public class Movimentacao {
     }
 
     public String getTipo() {
-        return tipo;
+        if(valor>0) {
+            return "Depósito";
+        } else {
+            return "Saque";
+        }
     }
 
     @Override
     public String toString() {
-        return this.data + " - " + this.numeroDoc + " - " + this.descricao + " - " + this.valor + " - " + this.tipo;
+        SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy");
+        return formatter.format(this.data) + " - " + this.numeroDoc + " - " + this.descricao + " - " + this.valor + " - " + getTipo();
     }
 
 }

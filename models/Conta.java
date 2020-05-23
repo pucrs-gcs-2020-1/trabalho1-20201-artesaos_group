@@ -1,5 +1,6 @@
 package models;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -20,14 +21,15 @@ public class Conta {
     }
 
     //Pensar na verificação.
-    public void adicionarMovimentacao(int numeroDoc, String descricao, double valor, String tipo){
-        Movimentacao movimentacao = new Movimentacao(numeroDoc, descricao, valor, tipo);
+    public void adicionarMovimentacao(int numeroDoc, String descricao, double valor){
+        Movimentacao movimentacao = new Movimentacao(numeroDoc, descricao, valor);
+        saldo = saldo+valor;
         movimentacoes.add(movimentacao);
     }
 
-    public ArrayList<Movimentacao> consultarMovimentos(Date dataInicial, Date dataFinal){return movimentacoes;}
-    public ArrayList<Movimentacao> consultarMovimentos(Operador operador){return movimentacoes;}
-    public ArrayList<Movimentacao> consultarMovimentos(String tipo){return movimentacoes;}
+    public ArrayList<Movimentacao> consultarMovimentos(Date dataInicial, Date dataFinal){return movimentacoes;} //TODO
+    public ArrayList<Movimentacao> consultarMovimentos(Operador operador){return movimentacoes;} //TODO
+    public ArrayList<Movimentacao> consultarMovimentos(String tipo){return movimentacoes;} //TODO
 
     public Date getDataCriacao() {
         return dataCriacao;
@@ -51,6 +53,7 @@ public class Conta {
 
     @Override
     public String toString() {
-        return this.id + " - " + this.dataCriacao + " - " + this.operador.getNome() + " - " + this.saldo;
+        SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy");
+        return this.id + " - " + formatter.format(this.dataCriacao) + " - " + this.operador.getNome() + " - " + this.saldo;
     }
 }
