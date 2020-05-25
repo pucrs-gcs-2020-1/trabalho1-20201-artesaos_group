@@ -37,10 +37,10 @@ public class GerenciadorContas {
         return null;
     }
 
-    public boolean transferirFundos(Conta contaOrigem, Conta contaDestino, double valor, int numeroDoc, String descricao) {
+    public boolean transferirFundos(Conta contaOrigem, Conta contaDestino, double valor, int numeroDoc, Operador operador, String descricao) {
         if((contaOrigem.getSaldo() - valor)>0) {
-            contaOrigem.adicionarMovimentacao(numeroDoc, descricao, -valor);
-            contaDestino.adicionarMovimentacao(numeroDoc, descricao, valor);
+            contaOrigem.adicionarMovimentacao(numeroDoc, operador, descricao, -valor);
+            contaDestino.adicionarMovimentacao(numeroDoc, operador, descricao, valor);
             return true;
         } else {
             return false;

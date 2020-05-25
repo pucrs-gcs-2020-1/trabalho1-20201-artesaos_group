@@ -21,8 +21,8 @@ public class Conta {
     }
 
     //Pensar na verificação.
-    public void adicionarMovimentacao(int numeroDoc, String descricao, double valor){
-        Movimentacao movimentacao = new Movimentacao(numeroDoc, descricao, valor);
+    public void adicionarMovimentacao(int numeroDoc, Operador operador, String descricao, double valor){
+        Movimentacao movimentacao = new Movimentacao(numeroDoc, operador, descricao, valor);
         saldo = saldo+valor;
         movimentacoes.add(movimentacao);
     }
