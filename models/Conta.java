@@ -27,9 +27,36 @@ public class Conta {
         movimentacoes.add(movimentacao);
     }
 
-    public ArrayList<Movimentacao> consultarMovimentos(Date dataInicial, Date dataFinal){return movimentacoes;} //TODO
-    public ArrayList<Movimentacao> consultarMovimentos(Operador operador){return movimentacoes;} //TODO
-    public ArrayList<Movimentacao> consultarMovimentos(String tipo){return movimentacoes;} //TODO
+    public ArrayList<Movimentacao> consultarMovimentosData(Date dataInicial, Date dataFinal){
+        ArrayList<Movimentacao> movimentacoesData = new ArrayList<>();
+        for (int i = 0; i < movimentacoes.size(); i++){
+            if (movimentacoes.get(i).getData().compareTo(dataInicial) >= 0 &&
+            movimentacoes.get(i).getData().compareTo(dataFinal) <= 0){
+                movimentacoesData.add(movimentacoes.get(i));
+            }
+        }
+        return movimentacoesData;
+    }
+
+    public ArrayList<Movimentacao> consultarMovimentosTipo(String tipo){
+        ArrayList<Movimentacao> movimentacoesTipo = new ArrayList<>();
+        for (int i = 0; i < movimentacoes.size(); i++){
+            if(movimentacoes.get(i).getTipo().equalsIgnoreCase(tipo)){
+                movimentacoesTipo.add(movimentacoes.get(i));
+            }
+        }
+        return movimentacoesTipo;
+    }
+
+    public ArrayList<Movimentacao> consultarMovimentosOperador(Operador operador){
+        ArrayList<Movimentacao> movimentacoesOperador = new ArrayList<>();
+        for (int i = 0; i < movimentacoes.size(); i++){
+            if(movimentacoes.get(i).getOperador().equals(operador){
+                movimentacoesOperador.add(movimentacoes.get(i));
+            }
+        }
+        return movimentacoesOperador;
+    }
 
     public Date getDataCriacao() {
         return dataCriacao;
