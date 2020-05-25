@@ -51,7 +51,7 @@ public class Conta {
     public ArrayList<Movimentacao> consultarMovimentosOperador(Operador operador){
         ArrayList<Movimentacao> movimentacoesOperador = new ArrayList<>();
         for (int i = 0; i < movimentacoes.size(); i++){
-            if(movimentacoes.get(i).getOperador().equals(operador)){
+            if(movimentacoes.get(i).getOperador().equals(operador){
                 movimentacoesOperador.add(movimentacoes.get(i));
             }
         }
