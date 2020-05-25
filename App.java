@@ -37,8 +37,8 @@ public class App {
         Conta contaJoao = gerenciadorContas.consultarConta(operadorJoao);
         Conta contaEduardo = gerenciadorContas.consultarConta(operadorEduardo);
         //Movimentações
-        contaJoao.adicionarMovimentacao(1, "Prêmio da loteria", 1000000);
-        contaEduardo.adicionarMovimentacao(1, "Lucro do curso de vender curso - Hotmart", 3000000);
+        contaJoao.adicionarMovimentacao(1, operadorJoao, "Prêmio da loteria", 1000000);
+        contaEduardo.adicionarMovimentacao(1, operadorEduardo, "Lucro do curso de vender curso - Hotmart", 3000000);
         //Imprime
         System.out.println(gerenciadorContas);
         System.out.println(gerenciadorOperadores);

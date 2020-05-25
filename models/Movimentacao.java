@@ -7,12 +7,14 @@ public class Movimentacao {
 
     private Date data;
     private int numeroDoc;
+    private Operador operador;
     private String descricao;
     private double valor;
 
-    public Movimentacao(int numeroDoc, String descricao, double valor){      
+    public Movimentacao(int numeroDoc, Operador operador, String descricao, double valor){      
         this.data = new Date(System.currentTimeMillis());
         this.numeroDoc = numeroDoc;
+        this.operador = operador;
         this.descricao = descricao;
         this.valor = valor;
     }
@@ -23,6 +25,10 @@ public class Movimentacao {
 
     public int getNumeroDoc() {
         return numeroDoc;
+    }
+
+    public Operador getOperador() {
+        return this.operador;
     }
 
     public String getDescricao() {
@@ -44,7 +50,7 @@ public class Movimentacao {
     @Override
     public String toString() {
         SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy");
-        return formatter.format(this.data) + " - " + this.numeroDoc + " - " + this.descricao + " - " + this.valor + " - " + getTipo();
+        return formatter.format(this.data) + " - " + this.numeroDoc + " - " + this.operador + " - " + this.descricao + " - " + this.valor + " - " + getTipo();
     }
 
 }
