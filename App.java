@@ -62,10 +62,16 @@ public class App {
     	case "1":
     		Conta conta = gerenciadorContas.cadastrarConta(operador);
     		System.out.println("Conta " + conta.getId() + " Criada");
+			gerenciadorContas.menuOperarConta(conta, operador);
 			menuPrincipal(operador);
     		break;
     	case "2":
-    	    menuPrincipal(operador);
+    		try {
+				gerenciadorContas.menuOperarConta(gerenciadorContas.operacaoProcurarConta(), operador);
+				menuPrincipal(operador);
+    		} catch (Exception e) {
+    			menuPrincipal(operador);
+			}
     		break;
     	case "3":
     		System.out.println("TODO: Cadastra Novo Operador");
