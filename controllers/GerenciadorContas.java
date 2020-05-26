@@ -4,6 +4,7 @@ import models.Conta;
 import models.Movimentacao;
 import models.Operador;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -152,6 +153,51 @@ public class GerenciadorContas {
     	return conta.adicionarMovimentacao(numeroDocumento, operador, descricao, montante);
     }
 
+
+    public void printRelatorio(Conta conta, ArrayList<Movimentacao> movimentacoes, String filtro) {
+    	// TODO: Formatar saida em forma de tabela https://github.com/iNamik/java_text_tables
+    	// TODO: Talvez o toString de conta ja possa retornar neste formato
+    	SimpleDateFormat formatter= new SimpleDateFormat("dd/MM/yyyy");
+    	System.out.println("Conta "+conta.getId() + ", criada por "+conta.getOperador().getNome()+"(" + conta.getOperador().getIniciais()  +") em "+formatter.format(conta.getDataCriacao()));
+    	for(Movimentacao mov: movimentacoes) {
+    		System.out.println(mov);
+    	}
+    }
+    public void menuConsultarMovimentos(Conta conta, Operador op) {
+    	Map<String, String> opcoes = new LinkedHashMap<String, String>();
+    	opcoes.put("1", "Todos os Movimentos");
+    	opcoes.put("2", "Filtrados por Período");
+    	opcoes.put("3", "Filtrados por Operador");
+    	opcoes.put("4", "Filtrados por Tipo");
+    	opcoes.put("5", "Sair");
+
+    	String escolha = MenuController.mostraMenuInterativo(opcoes, "Movimentações Conta " + conta.getId());
+
+        chamaOpcaoMovimentacao(escolha, op, conta);
+    }
+
+    public void chamaOpcaoMovimentacao(String escolha, Operador op, Conta conta) {
+    	switch(escolha) {
+    		case "1":
+	    		printRelatorio(conta, conta.getMovimentacoes(), "");
+	    		menuConsultarMovimentos(conta, op);
+    		break;
+    		case "2":
+    			System.out.println("TODO: Mostrar Interação para Filtros por Período");
+    			menuConsultarMovimentos(conta, op);
+			break;
+    		case "3":
+    			System.out.println("TODO: Mostrar Interação para Filtros por Operador");
+    			menuConsultarMovimentos(conta, op);
+			break;
+    		case "4":
+    			System.out.println("TODO: Mostrar Interação para Filtros por Tipo");
+    			menuConsultarMovimentos(conta, op);
+			break;
+
+    	}
+    }
+
     public void menuOperarConta(Conta conta, Operador operador) throws Exception {
     	Map<String, String> opcoes = new LinkedHashMap<String, String>();
     	opcoes.put("Saldo", "R$" + String.format("%.2f", conta.getSaldo()));
@@ -175,6 +221,7 @@ public class GerenciadorContas {
 			}
     		break;
     	case "2":
+    		menuConsultarMovimentos(conta, op);
     		menuOperarConta(conta, op);
     		break;
     	}
