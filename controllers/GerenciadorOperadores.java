@@ -12,9 +12,10 @@ public class GerenciadorOperadores {
         this.operadores = new ArrayList<>();
     }
 
-    public void cadastrarOperador(String nome, String iniciais) {
+    public Operador cadastrarOperador(String nome, String iniciais) {
         Operador operador = new Operador(nome, iniciais);
         operadores.add(operador);
+        return operador;
     }
 
     public Operador consultarOperador(String iniciais) {
