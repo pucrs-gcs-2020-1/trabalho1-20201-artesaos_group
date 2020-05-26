@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Conta;
+import models.Movimentacao;
 import models.Operador;
 
 import java.util.ArrayList;
@@ -100,6 +101,57 @@ public class GerenciadorContas {
     	return conta;
     }
 
+    public Movimentacao operacaoAdicionarMovimento(Conta conta, Operador operador) throws Exception {
+    	double montante;
+    	String descricao;
+    	int numeroDocumento;
+    	final String OPCAO_SAIR = "S";
+    	final String MENSAGEM_SAIR = "   '"+ OPCAO_SAIR  +"' para encerrar operação";
+    	do {
+	    	System.out.println("Informe Montante da Movimentação: \n"
+	    			+ "Obs. 1 - Use ponto para separação dos centavos. Ex: 1583.50\n"
+	    			+ "Obs. 2 - Use sinal de negativo para Movimentação de Saída. Ex: -1263.67\n"
+	    			+ MENSAGEM_SAIR);
+	    	String montanteString = input.nextLine();
+
+	    	if(montanteString.toUpperCase().equals(OPCAO_SAIR)) {
+	    		throw new Exception();
+	    	}
+
+	    	// Caso valor informado nao esteja no padrao XXX.XX
+	    	if(!montanteString.matches("^-?[0-9]+(\\.[0-9]{1,2})?$")) {
+	    		System.out.println("Montante Inválido. Separe parte inteira da decimal com ponto. Ex: 1583.50");
+	    		continue;
+	    	}
+
+	    	montante = Double.valueOf(montanteString);
+	    	break;
+    	} while(true);
+
+    	do {
+    		System.out.println("Informe Número do Documento:\n"+ MENSAGEM_SAIR);
+    		String nroDocString = input.nextLine();
+
+	    	if(nroDocString.toUpperCase().equals(OPCAO_SAIR)) {
+	    		throw new Exception();
+	    	}
+
+	    	// Caso valor de doc nao seja um inteiro
+	    	if(!nroDocString.matches("^\\d+$")) {
+	    		System.out.println("Número do Documento deve ser um Inteiro");
+	    		continue;
+	    	}
+
+    		numeroDocumento = Integer.valueOf(nroDocString);
+    		break;
+    	}while(true);
+
+    	System.out.println("Informe a Descrição da Movimentação:\n"+ MENSAGEM_SAIR);
+    	descricao = input.nextLine();
+
+    	return conta.adicionarMovimentacao(numeroDocumento, operador, descricao, montante);
+    }
+
     public void menuOperarConta(Conta conta, Operador operador) throws Exception {
     	Map<String, String> opcoes = new LinkedHashMap<String, String>();
     	opcoes.put("Saldo", "R$" + String.format("%.2f", conta.getSaldo()));
@@ -115,7 +167,12 @@ public class GerenciadorContas {
     public void chamaOpcao(String escolha, Operador op, Conta conta) throws Exception {
     	switch(escolha) {
     	case "1":
-    	    menuOperarConta(conta, op);
+    		try {
+	    		operacaoAdicionarMovimento(conta, op);
+	    		menuOperarConta(conta, op);
+	    	} catch (Exception e) {
+	    		menuOperarConta(conta, op);
+			}
     		break;
     	case "2":
     		menuOperarConta(conta, op);

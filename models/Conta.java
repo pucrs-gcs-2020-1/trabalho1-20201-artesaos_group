@@ -21,10 +21,11 @@ public class Conta {
     }
 
     //Pensar na verificação.
-    public void adicionarMovimentacao(int numeroDoc, Operador operador, String descricao, double valor){
+    public Movimentacao adicionarMovimentacao(int numeroDoc, Operador operador, String descricao, double valor){
         Movimentacao movimentacao = new Movimentacao(numeroDoc, operador, descricao, valor);
         saldo = saldo+valor;
         movimentacoes.add(movimentacao);
+        return movimentacao;
     }
 
     public ArrayList<Movimentacao> consultarMovimentos(Date dataInicial, Date dataFinal){return movimentacoes;} //TODO
