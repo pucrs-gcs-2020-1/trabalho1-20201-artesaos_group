@@ -1,5 +1,8 @@
 import models.*;
 import controllers.*;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class App {
@@ -40,9 +43,41 @@ public class App {
         return gerenciadorOperadores.cadastrarOperador(nomeCompleto, iniciais);
     }
 
-    public static void menuPrincipal() { //TODO
-        System.out.println("-------------------------------------------");
-        System.out.println("|");
+    public static void menuPrincipal(Operador operador) throws Exception {
+    	System.out.println("Operador:" + operador.getIniciais());
+    	Map<String, String> opcoes = new HashMap<String, String>();
+    	opcoes.put("1", "Criar Nova Conta");
+    	opcoes.put("2", "Gerenciar Conta Existente");
+    	opcoes.put("3", "Cadastrar Operador");
+    	opcoes.put("4", "Trocar de Operador");
+    	opcoes.put("5", "Sair");
+
+    	String escolha = MenuController.mostraMenuInterativo(opcoes, "Menu Principal");
+
+    	chamaOpcao(escolha, operador);
+    }
+
+    public static void chamaOpcao(String escolha, Operador operador) throws Exception {
+    	switch(escolha) {
+    	case "1":
+			menuPrincipal(operador);
+    		break;
+    	case "2":
+    	    menuPrincipal(operador);
+    		break;
+    	case "3":
+    		System.out.println("TODO: Cadastra Novo Operador");
+    		menuPrincipal(operador);
+    		break;
+    	case "4":
+    		System.out.println("TODO: Troca Operador");
+    		menuPrincipal(operador);
+    		break;
+    	case "5":
+    		throw new Exception();
+    	default:
+    		break;
+    	}
     }
 
     //Método para alimentar dados
@@ -73,7 +108,11 @@ public class App {
         Operador operador = menuLogin();
 
         do {
-
+        	try {
+				menuPrincipal(operador);
+			} catch (Exception e) {
+				System.out.println("Encerrando Programa!");
+			}
         } while (false);
     }
 }
