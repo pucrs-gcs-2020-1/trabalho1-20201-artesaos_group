@@ -60,6 +60,8 @@ public class App {
     public static void chamaOpcao(String escolha, Operador operador) throws Exception {
     	switch(escolha) {
     	case "1":
+    		Conta conta = gerenciadorContas.cadastrarConta(operador);
+    		System.out.println("Conta " + conta.getId() + " Criada");
 			menuPrincipal(operador);
     		break;
     	case "2":

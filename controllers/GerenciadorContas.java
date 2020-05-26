@@ -18,7 +18,7 @@ public class GerenciadorContas {
         return this.contas;
     }
 
-    public void cadastrarConta(Operador operador) {
+    public Conta cadastrarConta(Operador operador) {
         //Gera um novo ID para o Operador
         int id_novo = contas.size() + 1;
         //Pega o horário atual
@@ -26,6 +26,7 @@ public class GerenciadorContas {
         //Cria conta e adiciona        
         Conta conta = new Conta(id_novo, date, operador);
         contas.add(conta);
+        return conta;
     }
 
     public Conta consultarConta(Operador operador) {

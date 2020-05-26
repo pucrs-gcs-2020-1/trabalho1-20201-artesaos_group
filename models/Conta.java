@@ -54,6 +54,6 @@ public class Conta {
     @Override
     public String toString() {
         SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy");
-        return this.id + " - " + formatter.format(this.dataCriacao) + " - " + this.operador.getNome() + " - " + this.saldo;
+        return this.id + " - Criada Em: " + formatter.format(this.dataCriacao) + " - Criada Por: " + this.operador.getNome() + " - Saldo: " + this.saldo;
     }
 }
