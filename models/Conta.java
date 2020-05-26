@@ -21,10 +21,11 @@ public class Conta {
     }
 
     //Pensar na verificação.
-    public void adicionarMovimentacao(int numeroDoc, Operador operador, String descricao, double valor){
+    public Movimentacao adicionarMovimentacao(int numeroDoc, Operador operador, String descricao, double valor){
         Movimentacao movimentacao = new Movimentacao(numeroDoc, operador, descricao, valor);
         saldo = saldo+valor;
         movimentacoes.add(movimentacao);
+        return movimentacao;
     }
 
     public ArrayList<Movimentacao> consultarMovimentosData(Date dataInicial, Date dataFinal){
@@ -81,6 +82,6 @@ public class Conta {
     @Override
     public String toString() {
         SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy");
-        return this.id + " - " + formatter.format(this.dataCriacao) + " - " + this.operador.getNome() + " - " + this.saldo;
+        return this.id + " - Criada Em: " + formatter.format(this.dataCriacao) + " - Criada Por: " + this.operador.getNome() + " - Saldo: " + this.saldo;
     }
 }
