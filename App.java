@@ -115,7 +115,7 @@ public class App {
 	
 	public static void trocaOperador(){
 		System.out.println(gerenciadorOperadores.toString());
-		System.out.println("Selecione alguem operador a seguir, use as seuas iniciais");
+		System.out.println("Selecione algum operador a seguir, use as suas iniciais");
 		String iniciais = input.nextLine();
 		operadorSelecionado = gerenciadorOperadores.consultarOperador(iniciais);		
 	}
