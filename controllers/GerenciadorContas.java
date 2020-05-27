@@ -152,6 +152,71 @@ public class GerenciadorContas {
 
     	return conta.adicionarMovimentacao(numeroDocumento, operador, descricao, montante);
     }
+    
+    public void operacaoTransferirParaConta(Conta contaOrigem, Operador operador) throws Exception {
+    	Conta contaDestino;
+		do {
+			contaDestino = operacaoProcurarConta();
+			if(contaDestino.getId() == contaOrigem.getId()) {
+				System.out.println("Erro: Conta Destino é igual a Conta de Origem.");
+				continue;
+			}
+			break;
+		} while(true);
+
+    	double montante;
+    	String descricao;
+    	int numeroDocumento;
+    	final String OPCAO_SAIR = "S";
+    	final String MENSAGEM_SAIR = "   '"+ OPCAO_SAIR  +"' para encerrar operação";
+    	do {
+	    	System.out.println("Informe Montante da Transferência: \n"
+	    			+ "Obs. 1 - Use ponto para separação dos centavos. Ex: 1583.50\n"
+	    			+ MENSAGEM_SAIR);
+	    	String montanteString = input.nextLine();
+
+	    	if(montanteString.toUpperCase().equals(OPCAO_SAIR)) {
+	    		throw new Exception();
+	    	}
+
+	    	// Caso valor informado nao esteja no padrao XXX.XX
+	    	if(!montanteString.matches("^[0-9]+(\\.[0-9]{1,2})?$")) {
+	    		System.out.println("Montante Inválido. Separe parte inteira da decimal com ponto. Ex: 1583.50");
+	    		continue;
+	    	}
+
+	    	montante = Double.valueOf(montanteString);
+	    	break;
+    	} while(true);
+
+    	do {
+    		System.out.println("Informe Número do Documento:\n"+ MENSAGEM_SAIR);
+    		String nroDocString = input.nextLine();
+
+	    	if(nroDocString.toUpperCase().equals(OPCAO_SAIR)) {
+	    		throw new Exception();
+	    	}
+
+	    	// Caso valor de doc nao seja um inteiro
+	    	if(!nroDocString.matches("^\\d+$")) {
+	    		System.out.println("Número do Documento deve ser um Inteiro");
+	    		continue;
+	    	}
+
+    		numeroDocumento = Integer.valueOf(nroDocString);
+    		break;
+    	}while(true);
+
+    	System.out.println("Informe a Descrição da Movimentação:\n"+ MENSAGEM_SAIR);
+    	descricao = input.nextLine();
+    	
+    	boolean result = transferirFundos(contaOrigem, contaDestino, montante, numeroDocumento, operador, descricao);
+    	if(result) {
+    		System.out.println("Transferência Realizada com Sucesso");
+    	} else {
+    		System.out.println("Erro na Transferência. Tente Novamente!");
+    	}
+    }
 
 
     public void printRelatorio(Conta conta, ArrayList<Movimentacao> movimentacoes, String filtro) {
@@ -202,8 +267,9 @@ public class GerenciadorContas {
     	Map<String, String> opcoes = new LinkedHashMap<String, String>();
     	opcoes.put("Saldo", "R$" + String.format("%.2f", conta.getSaldo()));
     	opcoes.put("1", "Adicionar Movimento");
-    	opcoes.put("2", "Consultar Movimentos");
-    	opcoes.put("3", "Sair");
+    	opcoes.put("2", "Transferir Para Outra Conta");
+    	opcoes.put("3", "Consultar Movimentos");
+    	opcoes.put("4", "Sair");
 
     	String escolha = MenuController.mostraMenuInterativo(opcoes, "Conta " + conta.getId());
 
@@ -221,6 +287,14 @@ public class GerenciadorContas {
 			}
     		break;
     	case "2":
+    		try {
+    			operacaoTransferirParaConta(conta, op);
+	    		menuOperarConta(conta, op);
+	    	} catch (Exception e) {
+	    		menuOperarConta(conta, op);
+			}
+    		break;
+    	case "3":
     		menuConsultarMovimentos(conta, op);
     		menuOperarConta(conta, op);
     		break;
