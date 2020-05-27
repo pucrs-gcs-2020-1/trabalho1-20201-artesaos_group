@@ -73,10 +73,8 @@ public class App {
     			menuPrincipal(operador);
 			}
     		break;
-		case "3":
-			
-			Operador op = gerenciadorOperadores.cadastraNovoOperador();
-			System.out.println("Oparador -> " + op.toString() + " cadastrado" );
+    	case "3":
+    		System.out.println("TODO: Cadastra Novo Operador");
     		menuPrincipal(operador);
     		break;
     	case "4":
