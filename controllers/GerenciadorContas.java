@@ -260,7 +260,7 @@ public class GerenciadorContas {
 				String anoinicial = input.nextLine();
 				String conteudo = "";
 				conteudo = conteudo + diainicial+"/" + mesinicial+"/" + anoinicial;
-				Date datainicial;
+				Date datainicial = null;
 				try {
 					datainicial = data.parse(conteudo);
 					System.out.println(datainicial);
@@ -277,7 +277,7 @@ public class GerenciadorContas {
 				String anofinal = input.nextLine();
 				String conteudo2 = "";
 				conteudo2 = conteudo2 + diafinal +"/"+ mesfinal+"/" + anofinal;
-				Date datafinal;
+				Date datafinal = null;
 				try {
 					datafinal = data.parse(conteudo2);
 					System.out.println(datafinal);
@@ -285,7 +285,10 @@ public class GerenciadorContas {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				};
-				//printRelatorio(conta, conta.consultarMovimentosData(datainicial ,datafinal), "");
+				//TODO devolver a movimentacao pela data
+				//ArrayList<Movimentacao> movimentos = conta.consultarMovimentosData(datainicial ,datafinal);
+				
+				printRelatorio(conta, conta.consultarMovimentosData(datainicial ,datafinal), "");
 				
     			menuConsultarMovimentos(conta, op);
 			break;
