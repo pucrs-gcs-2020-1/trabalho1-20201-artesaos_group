@@ -112,7 +112,7 @@ public class App {
 		Operador operadorFelipeHamester = gerenciadorOperadores.consultarOperador("FH");
 		Operador operadorMartinFerreira = gerenciadorOperadores.consultarOperador("MF");
 		Operador operadorBrunoAndrade = gerenciadorOperadores.consultarOperador("BA");
-		Operador operadorWilliamDamasceno = gerenciadorOperadores.consultarOperador("Wd");
+		Operador operadorWilliamDamasceno = gerenciadorOperadores.consultarOperador("WD");
 		Operador operadorFilipeOliveira = gerenciadorOperadores.consultarOperador("FO");
 		Operador operadorJoaquimSantos = gerenciadorOperadores.consultarOperador("JAS");
 		Operador operadorLuccaLima = gerenciadorOperadores.consultarOperador("LPL");
@@ -122,9 +122,33 @@ public class App {
 
         //Contas
         gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("JVMB"));
-        gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("EAS"));
+		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("EAS"));
+		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("JVC"));
+		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("FJL"));
+		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("FH"));
+		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("MF"));
+		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("BA"));
+		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("WD"));
+		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("FO"));
+		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("JAS"));
+		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("LPL"));
+		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("RCB"));
+		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("BAB"));
+		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("PBB"));
         Conta contaJoao = gerenciadorContas.consultarConta(operadorJoao);
-        Conta contaEduardo = gerenciadorContas.consultarConta(operadorEduardo);
+		Conta contaEduardo = gerenciadorContas.consultarConta(operadorEduardo);
+		Conta contaJoaoGranzinoli = gerenciadorContas.consultarConta(operadorJoaoGranzinoli);
+		Conta contaFranciscoLucca = gerenciadorContas.consultarConta(operadorFranciscoLucca);
+		Conta contaFelipeHamester = gerenciadorContas.consultarConta(operadorFelipeHamester);
+		Conta contaMartinFerreira = gerenciadorContas.consultarConta(operadorMartinFerreira);
+		Conta contaBrunoAndrade = gerenciadorContas.consultarConta(operadorBrunoAndrade);
+		Conta contaWilliamDamasceno = gerenciadorContas.consultarConta(operadorWilliamDamasceno);
+		Conta contaFilipeOliveira = gerenciadorContas.consultarConta(operadorFilipeOliveira);
+		Conta contaJoaquimSantos = gerenciadorContas.consultarConta(operadorJoaquimSantos);
+		Conta contaLuccaLima = gerenciadorContas.consultarConta(operadorLuccaLima);
+		Conta contaRubensBorges = gerenciadorContas.consultarConta(operadorRubensBorges);
+		Conta contaBernarndoBarbosa= gerenciadorContas.consultarConta(operadorBernardoBarbosa);
+		Conta contaPedroBatista = gerenciadorContas.consultarConta(operadorPedroBatista);
         //Movimentações
         contaJoao.adicionarMovimentacao(1, operadorJoao, "Prêmio da loteria", 1000000);
         contaEduardo.adicionarMovimentacao(1, operadorEduardo, "Lucro do curso de vender curso - Hotmart", 3000000);
