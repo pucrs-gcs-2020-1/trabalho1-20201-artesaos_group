@@ -251,7 +251,6 @@ public class GerenciadorContas {
 			case "2":
 				SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
 				Scanner input = new Scanner(System.in);
-
 				System.out.println("Informe o dia inicial do periodo desejado:  ");
 				String diainicial = input.nextLine();
 				System.out.println("Informe o mes inicial do periodo desejado:  ");
@@ -265,7 +264,6 @@ public class GerenciadorContas {
 					datainicial = data.parse(conteudo);
 					System.out.println(datainicial);
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				};
 				
@@ -282,14 +280,10 @@ public class GerenciadorContas {
 					datafinal = data.parse(conteudo2);
 					System.out.println(datafinal);
 				} catch (Exception e2) {
-					// TODO Auto-generated catch block
+					
 					e2.printStackTrace();
-				};
-				//TODO devolver a movimentacao pela data
-				//ArrayList<Movimentacao> movimentos = conta.consultarMovimentosData(datainicial ,datafinal);
-				
-				printRelatorio(conta, conta.consultarMovimentosData(datainicial ,datafinal), "");
-				
+				};												
+				printRelatorio(conta, conta.consultarMovimentosData(datainicial ,datafinal), "");			
     			menuConsultarMovimentos(conta, op);
 			break;
     		case "3":
