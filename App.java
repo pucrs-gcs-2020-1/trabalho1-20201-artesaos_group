@@ -92,9 +92,34 @@ public class App {
     public static void alimentarDados() {
         //Operadores
         gerenciadorOperadores.cadastrarOperador("João Brentano", "JVMB");
-        gerenciadorOperadores.cadastrarOperador("Eduardo André Soares", "EAS");
+		gerenciadorOperadores.cadastrarOperador("Eduardo André Soares", "EAS");
+		gerenciadorOperadores.cadastrarOperador("Joao Victor Granzinoli", "JVG");
+		gerenciadorOperadores.cadastrarOperador("Francisco João Lucca", "FJL");
+		gerenciadorOperadores.cadastrarOperador("Felipe Hamester","FH");
+		gerenciadorOperadores.cadastrarOperador("Marntin Ferreira", "MF");
+		gerenciadorOperadores.cadastrarOperador("Bruno Andrade", "BA");
+		gerenciadorOperadores.cadastrarOperador("Willian Damasceno", "WD");
+		gerenciadorOperadores.cadastrarOperador("Filipe Oliveira", "FO");
+		gerenciadorOperadores.cadastrarOperador("Joaquim Alberto Santos","JAS");
+		gerenciadorOperadores.cadastrarOperador("Lucca Pereira Lima", "LPL");
+		gerenciadorOperadores.cadastrarOperador("Rubens Cardoso Borges", "RCB");
+		gerenciadorOperadores.cadastrarOperador("Bernardo Alves Barbosa ", "BAB");
+		gerenciadorOperadores.cadastrarOperador("Pedro Barros Batista", "PBB");
         Operador operadorJoao = gerenciadorOperadores.consultarOperador("JVMB");
-        Operador operadorEduardo = gerenciadorOperadores.consultarOperador("EAS");
+		Operador operadorEduardo = gerenciadorOperadores.consultarOperador("EAS");
+		Operador operadorJoaoGranzinoli = gerenciadorOperadores.consultarOperador("JVG");
+		Operador operadorFranciscoLucca = gerenciadorOperadores.consultarOperador("FJL");
+		Operador operadorFelipeHamester = gerenciadorOperadores.consultarOperador("FH");
+		Operador operadorMartinFerreira = gerenciadorOperadores.consultarOperador("MF");
+		Operador operadorBrunoAndrade = gerenciadorOperadores.consultarOperador("BA");
+		Operador operadorWilliamDamasceno = gerenciadorOperadores.consultarOperador("Wd");
+		Operador operadorFilipeOliveira = gerenciadorOperadores.consultarOperador("FO");
+		Operador operadorJoaquimSantos = gerenciadorOperadores.consultarOperador("JAS");
+		Operador operadorLuccaLima = gerenciadorOperadores.consultarOperador("LPL");
+		Operador operadorRubensBorges = gerenciadorOperadores.consultarOperador("RCB");
+		Operador operadorBernardoBarbosa = gerenciadorOperadores.consultarOperador("BAB");
+		Operador operadorPedroBatista = gerenciadorOperadores.consultarOperador("PBB");
+
         //Contas
         gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("JVMB"));
         gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("EAS"));
