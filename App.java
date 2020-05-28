@@ -119,6 +119,7 @@ public class App {
 		String iniciais = input.nextLine();
 		operadorSelecionado = gerenciadorOperadores.consultarOperador(iniciais);		
 	}
+	
     public static void main(String args[]) { //TODO
 
         alimentarDados();
