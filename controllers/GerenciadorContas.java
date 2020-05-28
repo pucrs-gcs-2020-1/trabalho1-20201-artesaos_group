@@ -256,7 +256,20 @@ public class GerenciadorContas {
     			menuConsultarMovimentos(conta, op);
 			break;
     		case "4":
-    			System.out.println("TODO: Mostrar Interação para Filtros por Tipo");
+				System.out.println("Escolha o tipo de movimentação:\n 1-Depósito\n 2-Saque");
+				Scanner input = new Scanner(System.in);
+				int tipoMovimentacao = input.nextInt();
+
+				while(tipoMovimentacao != 1 && tipoMovimentacao != 2){
+					System.out.println("O tipo de movimentação não é valido!\n 1-Depósito\n 2-Saque");
+					tipoMovimentacao = input.nextInt();
+				}
+
+				if (tipoMovimentacao == 1){
+					printRelatorio(conta, conta.consultarMovimentosTipo("Depósito"), "");
+				}else{
+					printRelatorio(conta, conta.consultarMovimentosTipo("Saque"), "");
+				}
     			menuConsultarMovimentos(conta, op);
 			break;
 
