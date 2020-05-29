@@ -149,9 +149,22 @@ public class App {
 		Conta contaRubensBorges = gerenciadorContas.consultarConta(operadorRubensBorges);
 		Conta contaBernarndoBarbosa= gerenciadorContas.consultarConta(operadorBernardoBarbosa);
 		Conta contaPedroBatista = gerenciadorContas.consultarConta(operadorPedroBatista);
+
         //Movimentações
         contaJoao.adicionarMovimentacao(1, operadorJoao, "Prêmio da loteria", 1000000);
-        contaEduardo.adicionarMovimentacao(1, operadorEduardo, "Lucro do curso de vender curso - Hotmart", 3000000);
+		contaEduardo.adicionarMovimentacao(1, operadorEduardo, "Lucro do curso de vender curso - Hotmart", 3000000);
+		contaJoaoGranzinoli.adicionarMovimentacao(1, operadorJoaoGranzinoli, "Comercio de roupas", 10000);
+		contaFranciscoLucca.adicionarMovimentacao(1, operadorFranciscoLucca, "Venda de gado", 400000);
+		contaFelipeHamester.adicionarMovimentacao(1, operadorFelipeHamester, "Salario", 2000);
+		contaMartinFerreira.adicionarMovimentacao(1, operadorMartinFerreira, "Venda de Artigos pessoais", 300);
+		contaBrunoAndrade.adicionarMovimentacao(1, operadorBrunoAndrade, "Lucro mensal de empresa", 5000000);
+		contaWilliamDamasceno.adicionarMovimentacao(1, operadorWilliamDamasceno, "Venda de Livros", 400);
+		contaFilipeOliveira.adicionarMovimentacao(1, operadorFilipeOliveira, "Marketing digital", 20000);
+		contaJoaquimSantos.adicionarMovimentacao(1, operadorJoaquimSantos, "Lucro de loja de artigos tecnológicos", 8500);
+		contaLuccaLima.adicionarMovimentacao(1, operadorLuccaLima, "Lucro em competição de LOL ", 1000000);
+		contaRubensBorges.adicionarMovimentacao(1, operadorRubensBorges, "Venda de carros usados", 40000);
+		contaBernarndoBarbosa.adicionarMovimentacao(1, operadorBernardoBarbosa, "Lucro de bar", 9000);
+		contaPedroBatista.adicionarMovimentacao(1, operadorPedroBatista, "Lucro de venda de curso na udemy", 12000);
         //Imprime
         System.out.println(gerenciadorContas);
         System.out.println(gerenciadorOperadores);
