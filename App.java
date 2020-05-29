@@ -124,7 +124,7 @@ public class App {
         //Contas
         gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("JVMB"));
 		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("EAS"));
-		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("JVC"));
+		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("JVG"));
 		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("FJL"));
 		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("FH"));
 		gerenciadorContas.cadastrarConta(gerenciadorOperadores.consultarOperador("MF"));
