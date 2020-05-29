@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Date;
 
 public class GerenciadorContas {
 
@@ -247,8 +248,42 @@ public class GerenciadorContas {
 	    		printRelatorio(conta, conta.getMovimentacoes(), "");
 	    		menuConsultarMovimentos(conta, op);
     		break;
-    		case "2":
-    			System.out.println("TODO: Mostrar Interação para Filtros por Período");
+			case "2":
+				SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
+				Scanner input = new Scanner(System.in);
+				System.out.println("Informe o dia inicial do periodo desejado:  ");
+				String diainicial = input.nextLine();
+				System.out.println("Informe o mes inicial do periodo desejado:  ");
+				String mesinicial = input.nextLine();
+				System.out.println("Informe o ano inicial do periodo desejado:  ");
+				String anoinicial = input.nextLine();
+				String conteudo = "";
+				conteudo = conteudo + diainicial+"/" + mesinicial+"/" + anoinicial;
+				Date datainicial = null;
+				try {
+					datainicial = data.parse(conteudo);
+					System.out.println(datainicial);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				};
+				
+				System.out.println("Informe o dia final do periodo desejado:  ");
+				String diafinal = input.nextLine();
+				System.out.println("Informe o mes final do periodo desejado:  ");
+				String mesfinal = input.nextLine();
+				System.out.println("Informe o ano final do periodo desejado:  ");
+				String anofinal = input.nextLine();
+				String conteudo2 = "";
+				conteudo2 = conteudo2 + diafinal +"/"+ mesfinal+"/" + anofinal;
+				Date datafinal = null;
+				try {
+					datafinal = data.parse(conteudo2);
+					System.out.println(datafinal);
+				} catch (Exception e2) {
+					
+					e2.printStackTrace();
+				};												
+				printRelatorio(conta, conta.consultarMovimentosData(datainicial ,datafinal), "");			
     			menuConsultarMovimentos(conta, op);
 			break;
     		case "3":
