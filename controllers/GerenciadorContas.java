@@ -5,11 +5,7 @@ import models.Movimentacao;
 import models.Operador;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class GerenciadorContas {
 
@@ -228,6 +224,7 @@ public class GerenciadorContas {
     		System.out.println(mov);
     	}
     }
+
     public void menuConsultarMovimentos(Conta conta, Operador op) {
     	Map<String, String> opcoes = new LinkedHashMap<String, String>();
     	opcoes.put("1", "Todos os Movimentos");
@@ -252,8 +249,19 @@ public class GerenciadorContas {
     			menuConsultarMovimentos(conta, op);
 			break;
     		case "3":
-    			System.out.println("TODO: Mostrar Interação para Filtros por Operador");
-    			menuConsultarMovimentos(conta, op);
+				Scanner input = new Scanner(System.in);
+				System.out.println("Informe as iniciais do operador desejado");
+				String nomeOperador = input.nextLine();
+
+				ArrayList<Movimentacao> movimentacoes = new ArrayList<>();
+
+				for (Movimentacao movimentacao: conta.getMovimentacoes() ) {
+					if(movimentacao.getOperador().getIniciais().equalsIgnoreCase(nomeOperador)){
+						movimentacoes.add(movimentacao);
+					}
+				}
+				printRelatorio(conta, movimentacoes,"");
+				menuConsultarMovimentos(conta, op);
 			break;
     		case "4":
 				System.out.println("Escolha o tipo de movimentação:\n 1-Depósito\n 2-Saque");
