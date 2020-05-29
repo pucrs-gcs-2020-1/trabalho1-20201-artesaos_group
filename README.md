@@ -11,6 +11,7 @@ Componentes do time:
 - Willian Damasceno
 - João Consentino
 - Filipe Oliveira
+- Matheu Góes
 
 # Branching model
 
