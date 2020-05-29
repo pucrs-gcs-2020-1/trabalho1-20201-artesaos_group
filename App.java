@@ -9,7 +9,9 @@ public class App {
 
     //Controllers
     static GerenciadorContas gerenciadorContas = new GerenciadorContas();
-    static GerenciadorOperadores gerenciadorOperadores = new GerenciadorOperadores();
+	static GerenciadorOperadores gerenciadorOperadores = new GerenciadorOperadores();
+	
+	static Operador operadorSelecionado;
 
     //Recursos
     static Scanner input = new Scanner(System.in);
@@ -79,8 +81,8 @@ public class App {
     		menuPrincipal(operador);
     		break;
     	case "4":
-    		System.out.println("TODO: Troca Operador");
-    		menuPrincipal(operador);
+    		System.out.println("A seguir uma lista com todos os operadores será exibida");
+    		trocaOperador();
     		break;
     	case "5":
     		throw new Exception();
@@ -172,7 +174,15 @@ public class App {
         for(Conta conta:gerenciadorContas.getContas()) {
             System.out.println(conta.getMovimentacoes());
         }
-    }
+	}
+	
+	public static void trocaOperador(){
+		System.out.println(gerenciadorOperadores.toString());
+		System.out.println("Selecione algum operador a seguir, use as suas iniciais");
+		String iniciais = input.nextLine();
+		operadorSelecionado = gerenciadorOperadores.consultarOperador(iniciais);		
+	}
+	
     public static void main(String args[]) { //TODO
 
         alimentarDados();
